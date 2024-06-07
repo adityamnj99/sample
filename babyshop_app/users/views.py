@@ -28,7 +28,7 @@ def user_login(request):
                 else:
                     messages.info(request,'User is inactive')
             else:
-                messages.info(request,'Check your login information')
+                messages.info(request,'Invalid Login credentials Please check again')
 
     else:
         form=LoginForm()
