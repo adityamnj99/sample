@@ -14,25 +14,7 @@ def user_register(request):
         form=RegisterForm()
 
     return render(request,'register.html',{'form':form})
-def user_login(request):
-    if request.method=="POST":
-        form=LoginForm(request.POST)
-        if form.is_valid():
-            username=form.cleaned_data['username']
-            password=form.cleaned_data['password']
-            user= authenticate(request,username=username,password=password)
-            if user is not None:
-                if user.is_active:
-                    login(request,user)
-                    return redirect('/')
-                else:
-                    messages.info(request,'User is inactive')
-            else:
-                messages.info(request,'Invalid Login credentials Please check again')
 
-    else:
-        form=LoginForm()
-    return render(request,'login.html',{'form':form})
 
 def user_logout(request):
     logout(request)
